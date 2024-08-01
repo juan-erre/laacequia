@@ -1,0 +1,900 @@
+/* Importa una fuente online */
+@font-face {
+    font-family:"fuente_online";
+    src: url("https://fonts.gstatic.com/s/opensans/v36/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsiH0B4gaVI.woff2");
+}
+
+/* Define las variables para los colores */
+:root{
+    --colorA: #ffffff;
+    --colorB: #EEEEEE;
+    --colorC: #979797;
+    --colorD: #2B2A29;
+    --colorE: #000000;
+    --colorF: #007F73;
+    --colorG: #4CCD99;
+    --colorH: #FFC700;
+}
+
+/* Se incluyen en las dimensiones de los elementos los rellenos y los bordes, pero no los margenes */ 
+* { box-sizing: border-box;}
+
+h1{
+    font-family: "fuente_online", serif;
+    font-size: 20px;
+}
+
+h2{
+    display: none;
+}
+
+a{
+    font-family: "fuente_online", serif;
+    color: var(--colorA);
+}
+
+p{
+    font-family: "fuente_online", serif;
+    font-size: 18px;
+}
+
+li{
+    font-family: serif;
+    font-size: 20px;
+}
+
+button{
+    box-shadow: 0px 0px 5px 2px var(--colorC);
+    background-color: var(--colorF);
+    color:var(--colorA);
+    font-family: "fuente_online", serif;
+    font-size: 14px;
+    font-weight: bolder;
+    border: solid 1px var(--colorA);
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    margin: 1%;
+}
+
+button:hover{
+    background-color: var(--colorH);
+    color:var(--colorE);
+    cursor: pointer;
+}
+
+button:active {
+    opacity: 0.5;
+}
+
+.logo{
+    width: 40%;
+}
+
+body{
+    /* Define el contenedor principal como un grid */ 
+    display: grid;
+    /* Define el número de filas y columnas que conforman nuestra maqueta*/
+    grid-template-columns: 100%;
+    grid-template-rows: 25px 100px 800px 1100px 1050px 600px 50px;
+    /* Define mediante areas nuestra maqueta*/
+    grid-template-areas:
+       "header"
+       "nav"
+       "zona_1"
+       "zona_2"
+       "zona_3"
+       "zona_4"
+       "footer"; 
+    background-color: var(--colorB);
+    margin: 1%;
+}
+
+/* Área de Cabecera */   
+header{
+    grid-area:header;
+    display: flex;
+    flex-direction: row;
+    flex-wrap:nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: var(--colorB);
+}
+
+/* Área de navegación*/
+nav{
+    grid-area:nav;
+    display: flex;
+    flex-direction: row;
+    flex-wrap:nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: var(--colorB);
+}
+
+.lateral_superior {
+    display: flex;
+    flex-direction: column;
+    flex-wrap:nowrap;
+    justify-content: center;
+    width: 9%;
+}
+
+/* Menú */
+#menu_principal{
+    box-shadow: -5px -5px 20px -5px var(--colorC), 5px 5px 20px -5px var(--colorC);
+    background-color: var(--colorF);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-around;
+    width: 80%;
+    height: 70%;
+}
+
+#opciones_menu {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 50%;
+}
+
+#menu_principal a {
+    text-decoration: none;
+    font-weight: bolder;
+    font-size: 18px;
+ }
+
+#menu_principal a:hover {
+    color: var(--colorH);
+}
+
+#menu_principal p {
+    color: var(--colorA);
+    margin-right: 1vw;
+}
+
+.icono_idiomas{
+    width: 1.7vw;
+    margin-left: 0.5vw;
+}
+
+/* Subzona de contenido */
+#contenedor_zona_1{
+    grid-area:zona_1;
+    background: url("../imagenes/fondo_2.png") no-repeat;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    background-color: var(--colorA);
+}
+
+#div_definicion_sol {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    height: 32%;
+}
+
+#div_definicion {
+    width: 70%;
+    height: 100%;
+}
+
+#div_sol {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: end;
+    justify-content: center;
+    width: 30%;
+    height: 100%;
+}
+
+#imagen_sol {
+    position:relative; 
+    max-height: 80%;
+    opacity: 0;
+    left: 15%;
+}
+
+/* Define las caracteristicas de la animación para mostrar el sol */
+.imagen_sol{
+    animation-name: amanecer;
+    animation-duration: 4s;
+    animation-iteration-count: 1;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+}
+
+/* Define el estado inicial y final de la animación*/
+@keyframes amanecer {
+    from   {
+        }
+    to {
+        left: -15%;
+        opacity:1;
+    }
+}
+
+#div_nubes {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    width: 100%;
+    height: 9%;
+}
+
+#div_gotas{
+    width: 100%;
+    height: 1%;
+}
+
+.nube {
+    position:relative;   
+    height: 95%;
+    opacity:0;
+    margin: 1%;
+}
+
+/* Define las caracteristicas de la animación para mostrar las nubes de izquierda a derecha */
+#nube1, #nube2, #nube4, #nube5 {
+    animation-name: aparece_nube;
+    animation-duration: 25s;
+    animation-iteration-count: 1;
+    animation-delay: 6s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+}
+
+/* Define los estado de la animación*/
+@keyframes aparece_nube {
+    0%  {
+        left: -30%;
+        }
+    25% {
+        left: 0%;
+        opacity:0.5;
+    }
+    90%{
+        left: 0%;
+        opacity:0;
+    }
+}
+
+#gota1 {
+    max-width: 5vw;
+    opacity:0;
+    margin: 1px;
+    position:relative;    
+    left: -5%;
+    bottom: 0%;
+}
+
+#gota2 {
+    max-width: 5vw;
+    opacity:0;
+    margin: 1px;
+    position:relative;    
+    left: -0%;
+    bottom: 0%;
+}
+
+#gota3 {
+    max-width: 5vw;
+    opacity:0;
+    margin: 1px;
+    position:relative;    
+    left: 5%;
+    bottom: 0%;
+}
+
+#gota4 {
+    max-width: 5vw;
+    opacity:0;
+    margin: 1px;
+    position:relative;    
+    left: 15%;
+    bottom: 0%;
+}
+
+#gota5 {
+    max-width: 5vw;
+    opacity:0;
+    margin: 1px;
+    position:relative;    
+    left: 25%;
+    bottom: 0%;
+}
+
+#gota6 {
+    max-width: 5vw;
+    opacity:0;
+    margin: 1px;
+    position:relative;    
+    left: 45%;
+    bottom: 0%;
+}
+
+/* Define las caracteristicas de la animación para mostrar las gotasA */
+.gotaA {
+    animation-name: lluvia;
+    animation-duration: 4s;
+    animation-iteration-count: 4;
+    animation-delay: 10s;
+    animation-fill-mode: initial;
+    animation-timing-function: ease-out; 
+}
+
+/* Define las caracteristicas de la animación para mostrar las gotasB */
+.gotaB {
+    animation-name: lluvia;
+    animation-duration: 4s;
+    animation-iteration-count: 3;
+    animation-delay: 12s;
+    animation-fill-mode: initial;
+    animation-timing-function: ease-in-out;
+}
+
+/* Define el estado inicial y final de la animación*/
+@keyframes lluvia {
+    from   {
+        }
+    to {
+        bottom: -5000%;
+        left: 50%;
+        opacity:1;
+    }
+}
+
+#div_principal {
+    display: flex;
+    flex-direction: row;
+    flex-wrap:nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 58%;
+}
+
+#div_contacto {
+    display: flex;
+    flex-direction: row;
+    flex-wrap:nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 30%;
+    height: 100%;
+    text-align: center;
+}
+
+#div_redes {
+    display: flex;
+    flex-direction: column;
+    flex-wrap:nowrap;
+    align-items: start;
+    justify-content: space-around;
+    height: 100%;
+}
+
+#div_email {
+    margin: 2%;
+}
+
+/* Iconos de redes sociales con transicion */    
+#icono_facebook {
+    border: var(--colorA) 0.5vw solid;
+    border-radius: 50%;
+    width: 5vw;
+}
+        
+#icono_facebook:hover {
+    transform: rotate(360deg);
+    border-color: var(--colorH);
+    /* La transición se aplica sobre todas las propiedad definidas y durará 2 segundo.*/
+    transition: all, 2s;
+}
+ 
+#icono_instagram {
+    border: var(--colorA) 0.5vw solid;
+    border-radius: 50%;
+    width: 5vw;
+}
+         
+#icono_instagram:hover {
+    transform: rotate(360deg);
+    border-color: var(--colorH);
+    /* La transición se aplica sobre todas las propiedad definidas y durará 2 segundo.*/
+    transition: all, 2s;
+}
+
+#icono_youtube {
+    border: var(--colorA) 0.5vw solid;
+    border-radius: 50%;
+    width: 5vw;
+}
+         
+#icono_youtube:hover {
+    transform: rotate(360deg);
+    border-color: var(--colorH);
+    /* La transición se aplica sobre todas las propiedad definidas y durará 2 segundo.*/
+    transition: all, 2s;
+}
+
+#div_huerto {
+    display: flex;
+    flex-direction: column;
+    flex-wrap:nowrap;
+    align-items: center;
+    justify-content: end;
+    width: 55%;
+    height: 100%;
+}
+
+#mariquita_1 {
+    position:relative;   
+    max-height: 5vh;
+    left: -25%;
+    bottom: -75%;
+    opacity: 0;
+}
+
+#mariquita_2 {
+    position:relative;   
+    max-height: 5vh;
+    transform: rotate(90deg);
+    left: 10%;
+    bottom: -57%;
+    opacity: 0;
+}
+
+#mariquita_3 {
+    position:relative;   
+    max-height: 5vh;
+    transform: rotate(200deg);
+    left: 35%;
+    bottom: -55%;
+    opacity: 0;
+}
+
+.mariquita {
+    animation-name: aparecer;
+    animation-duration: 6s;
+    animation-iteration-count: 1;
+    animation-delay: 20s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in;
+}
+
+/* Define el estado inicial y final de cada animación*/
+@keyframes aparecer {
+    from   {
+        }
+    to {
+        opacity:1;
+    }
+}
+
+#imagen_portada{
+    box-shadow: -15px -15px 20px -5px var(--colorC), 15px 15px 20px -5px var(--colorC);
+    border-radius: 2%;
+    width: 98%;
+    margin-bottom: 1%;
+}
+
+#div_logo {
+    display: flex;
+    flex-direction: row;
+    flex-wrap:nowrap;
+    align-items: center;
+    justify-content: center;
+    width: 15%;
+    height: 100%;
+}
+
+#div_logo img{
+    width: 85%;
+}
+
+/* Subzona de contenido */
+#contenedor_zona_2 {
+    grid-area:zona_2;
+    display: flex;
+    flex-direction: row;
+    flex-wrap:nowrap;
+    align-items: start;
+    justify-content: space-evenly;
+}  
+
+#contenedor_zona_2 div {
+    width: 45%
+}
+
+#contenedor_zona_2 img {
+    border: solid 10px var(--colorA);
+    width: 85%;
+    margin-left: 10%;
+    margin-top: 5%;
+}
+
+#contenedor_zona_2 li {
+    margin-left: 6%;
+}
+
+/* Subzona de contenido */
+#contenedor_zona_3{
+    grid-area:zona_3;
+    display: flex;
+    flex-direction: column;
+    flex-wrap:nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+}  
+
+.contenedor_imagen {
+    display: flex;
+    flex-direction: row;
+    flex-wrap:nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 90%;
+    transition: transform 0.5s ease;
+}
+
+.imagen_huerto {
+    box-shadow: -5px -5px 20px -5px var(--colorA), 5px 5px 20px -5px var(--colorA);
+    border: solid 10px var(--colorA);
+    width: 12vw;
+}
+
+.imagen_huerto:hover {
+    transform: scale(2);
+}
+
+/* Subzona de contenido */
+#contenedor_zona_4{
+    grid-area:zona_4;
+    background: url("../imagenes/fondo_1.png");
+    display: flex;
+    flex-direction: row;
+    flex-wrap:nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+}  
+
+#contenedor_zona_4 div {
+    width: 45%;
+}
+
+#contenedor_zona_4 div h2{
+    display: flex;
+    font-size: 20px;
+}
+
+#contenedor_zona_4 img {
+    border: solid 10px var(--colorA);
+    width: 80%;
+    margin-left: 10%;
+}
+
+/* Pie de página */
+footer{
+    grid-area:footer;
+    display: flex;
+    flex-direction: row;
+    flex-wrap:nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+/* Adaptación a la resolución de la pantalla  */
+@media screen and (min-width:1820px) {
+
+    #imagen_portada{
+        width: 85%;
+    }
+    #contenedor_zona_2 img {
+         width: 70%;
+    }
+}
+
+@media screen and (max-width:1200px) {
+
+    body{
+        grid-template-rows: 25px 100px 800px 1150px 650px 450px 50px;
+    }  
+    .icono_idiomas{
+        width: 2.5vw;
+    }
+    #nube1 {
+        display:none;
+    }
+    #div_email p{
+        font-size: 16px;
+    }
+    #div_logo {
+        display: none;
+    }
+    #div_huerto {
+        width: 70%;
+    }
+    .imagen_huerto:hover {
+        transform: scale(2.5);
+    }
+    #contenedor_zona_4 img {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width:992px) {
+   
+    body{
+        grid-template-rows: 25px 100px 1050px 2200px 600px 1050px 50px;
+       }
+    button{
+        font-size: 10px;
+        width: 60px;
+        height: 60px;
+    }
+    #menu_principal{
+        width: 100%;
+    }
+    #menu_principal a{
+        font-size: 14px;
+    }
+    #menu_principal p{
+        font-size: 14px;
+    }
+    .icono_idiomas{
+        width: 3vw;
+    }
+    #div_definicion_sol {
+        flex-direction: column;
+    }
+    #div_definicion {
+        width: 100%;
+        height: 60%;
+    }
+    #div_sol {
+        width: 100%;
+        height: 40%;
+    }
+    #imagen_sol {
+        max-height: 100%;
+        left: 35%;
+    }
+    @keyframes amanecer {
+        from   {
+            }
+        to {
+            left: 20%;
+            opacity:1;
+        }
+    }
+    #div_nubes {
+        height: 6%;
+    }
+    #nube2 {
+        display:none;
+    }
+    @keyframes lluvia {
+        from   {
+            }
+        to {
+            bottom: -2500%;
+            left: 50%;
+            opacity:1;
+        }
+    } 
+    #div_principal {
+        flex-direction: column-reverse;
+    }
+    #div_huerto {
+        width: 100%;
+        height: 62%;
+    }
+    #imagen_portada {
+        width: 80%;
+    }
+    #div_contacto {
+        width: 100%;
+        height: 38%;
+    }
+    #icono_facebook, #icono_instagram, #icono_youtube {
+        width: 6vw;
+    }
+    #contenedor_zona_2 {
+       flex-direction: column;
+       align-items: center;
+       justify-content: space-evenly;
+    }
+    #contenedor_zona_2 div {
+        width: 75%
+    }
+    #contenedor_zona_2 img {
+        width: 100%;
+        margin-left: 0%;
+        margin-top: 2%;
+    }
+    .imagen_huerto:hover {
+        transform: scale(3);
+    }
+    #contenedor_zona_4 {
+        flex-direction: column;
+    }
+    #contenedor_zona_4 div {
+        width: 75%;
+    }
+    #contenedor_zona_4 img {
+        width: 100%;
+        margin-left: 0%;
+        margin-top: 2%;
+    }
+}
+
+@media screen and (max-width:768px) {
+   
+    body{
+        grid-template-rows: 25px 100px 1000px 2100px 700px 1050px 50px;
+       }  
+    #reiniciar_animacion {
+        display:none;
+    }
+    #opciones_menu {
+        display: none;
+    }
+    #div_definicion_sol {
+        height: 38%;
+    }
+    #div_definicion {
+        width: 100%;
+        height: 75%;
+    }
+    #div_sol {
+        width: 100%;
+        height: 25%;
+    }
+    #div_principal {
+        height: 55%;
+    }
+    #div_huerto {
+        height: 55%;
+    }
+    #div_contacto {
+        height: 45%;
+    }
+    @keyframes lluvia {
+        from   {
+            }
+        to {
+            bottom: -2500%;
+            left: 40%;
+            opacity:1;
+        }
+    }
+    #contenedor_zona_2 div {
+        width: 90%
+    }
+    .imagen_huerto {
+        width: 20vw;
+    }
+    .imagen_huerto:hover {
+        transform: scale(3.5);
+    }
+    #contenedor_zona_4 div {
+        width: 95%;
+    }
+}
+
+@media screen and (max-width:576px) {
+
+    body{
+        grid-template-rows: 25px 100px 1000px 1800px 500px 900px 50px;  
+       }  
+    h1{
+        font-size: 12px;
+    }
+    .logo{
+        width: 50%;
+    }
+    .icono_idiomas{
+        width: 5.5vw;
+    }
+    p{
+        font-size: 16px;
+    }
+    #div_definicion_sol {
+        height: 40%;
+    }
+    #nube4 {
+        display:none;
+    }
+    @keyframes lluvia {
+        from   {
+            }
+        to {
+            bottom: -1800%;
+            left: 40%;
+            opacity:1;
+        }
+    }
+    #div_principal {
+        height: 53%;
+    }
+    #div_huerto {
+        height: 40%;
+    }
+    #div_contacto {
+        height: 60%;
+    }
+    #icono_facebook, #icono_instagram, #icono_youtube {
+        width: 10vw;
+    }
+    .imagen_huerto {
+        width: 20vw;
+    }
+}
+
+@media screen and (max-width:420px) {
+
+    body{
+        grid-template-rows: 25px 100px 1000px 1820px 500px 800px 50px;
+    } 
+    p{
+        font-size: 14px;
+    }
+    #div_definicion_sol {
+        height: 37%;
+    }
+    #div_definicion {
+        height: 85%;
+    }
+    #div_sol {
+        height: 15%;
+    }
+    #imagen_sol {
+        left: 20%;
+    }
+    .nube {
+        height: 80%;
+    }
+    @keyframes lluvia {
+        from   {
+            }
+        to {
+            bottom: -1000%;
+            left: 40%;
+            opacity:1;
+        }
+    }
+    #div_principal {
+        height: 56%;
+    }
+    #div_huerto {
+        height: 25%;
+    }
+    #mariquita_1 {
+        bottom: -135%;
+    }
+    #mariquita_2 {
+        bottom: -115%;
+    }
+    #mariquita_3 {
+        bottom: -80%;
+    }
+    #div_contacto {
+        height: 75%;
+    }
+}
+
+/* Adaptación a resoluciones de pantalla superiores a 300px */
